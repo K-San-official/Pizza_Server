@@ -14,7 +14,6 @@ class Pizza:
         self.toppings = toppings
 
     def to_JSON(self):
-        json = {"name":str(name),
-                "toppings":str(toppings),
-                "price":str(cost_euro + '.' +  cost_cents)}
-
+        return {"name":str(self.name),
+                "toppings":str(self.toppings),
+                "price":str(self.cost_euro + '.' + self.cost_cents)}

@@ -3,8 +3,10 @@ CREATE DATABASE pizzas;
 USE pizzas;
 
 -- Create pizzza table
-CREATE TABLE pizza(
-        id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-        name varchar(255),
-        price decimal(16,2)
-)
+create table Pizza (
+    pizza_id int NOT NULL AUTO_INCREMENT,
+    pizza_name varchar(255) NOT NULL,
+    pizza_price_euros int NOT NULL,
+    pizza_price_cents int NOT NULL, PRIMARY KEY (pizza_id));
+
+

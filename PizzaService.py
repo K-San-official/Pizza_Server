@@ -49,4 +49,6 @@ api.add_resource(Desert, '/desert')
 api.add_resource(Customer, '/customer')
 api.add_resource(Order, '/order')
 
+if __name__ == '__main__':
+    app.run(debug=True)
 

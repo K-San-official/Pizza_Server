@@ -5,15 +5,11 @@ from mysql.connector import (connection)
 
 import mysql.connector
 
-config = {
-  'user': 'root',
-  'password': 'password',
-  'host': '127.0.0.1',
-  'database': 'pizzas',
-  'raise_on_warnings': True
-}
+cnx = mysql.connector.connect(user='root', password='password',
+                              host='127.0.0.1',
+                              database='pizzas')
 
-cnx = mysql.connector.connect(**config)
+
 cursor = cnx.cursor()
 
 # required methods

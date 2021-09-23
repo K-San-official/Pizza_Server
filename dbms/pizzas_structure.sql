@@ -1,3 +1,7 @@
+
+-- Remove any residuals
+DROP DATABASE IF EXISTS pizzas;
+
 -- Create Database
 CREATE DATABASE pizzas;
 USE pizzas;

@@ -32,3 +32,5 @@ INSERT INTO Dessert (dessert_name, dessert_price_euros, dessert_price_cents) VAL
 INSERT INTO Dessert (dessert_name, dessert_price_euros, dessert_price_cents) VALUES ("Ice Cream", 5, 0);
 INSERT INTO Dessert (dessert_name, dessert_price_euros, dessert_price_cents) VALUES ("Rice Pudding", 4, 0);
 INSERT INTO Dessert (dessert_name, dessert_price_euros, dessert_price_cents) VALUES ("Protein Shake Ice", 24, 7);
+
+

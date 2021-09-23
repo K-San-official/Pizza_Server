@@ -1,7 +1,8 @@
 
 class Drink:
 
-    def __init__(self, name, cost_euro, cost_cents):
+    def __init__(self, drink_id, name, cost_euro, cost_cents):
+        self.drink_id = drink_id
         self.name = name
         self.cost_euro = cost_euro
         self.cost_cents = cost_cents

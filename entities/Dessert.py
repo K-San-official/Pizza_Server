@@ -1,7 +1,7 @@
+class Dessert:
 
-class Desert:
-
-    def __init__(self, name, cost_euro, cost_cents):
+    def __init__(self, dessert_id, name, cost_euro, cost_cents):
+        self.dessert_id = dessert_id
         self.name = name
         self.cost_euro = cost_euro
         self.cost_cents = cost_cents

@@ -7,9 +7,8 @@
 ##### Step 2: Install Dependencies
     pip3 install flask
     pip3 install flask-restful
-    pip3 install flask_mysqldb
     pip3 install mysql
-    mysql-connector-python
+    pip3 install mysql-connector-python
     
 ##### Step 3: Run server
     python3 pizza_server.py

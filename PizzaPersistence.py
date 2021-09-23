@@ -1,7 +1,6 @@
 from entities.Pizza import Pizza
 from entities.Dessert import Dessert
 from entities.Drink import Drink
-import mysql
 from mysql.connector import (connection)
 
 import mysql.connector
@@ -74,9 +73,9 @@ if __name__ == '__main__':
     for dessert in get_all_desserts():
         print(dessert.dessert_id, dessert.name)
 
-    test_customer = Customer(1, )
+    #test_customer = Customer(1, )
 
-    get_customer_address()
+    #get_customer_address()
 
 """
 - get_all_pizzas() -> Pizza[]

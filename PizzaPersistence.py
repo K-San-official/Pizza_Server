@@ -50,7 +50,7 @@ def create_customer(Customer):
     return None
 
 def get_customer_address(Customer):
-    query = ("SELECT street, town, postcode FROM Customer")
+    query = ("SELECT Address.street, Address.town, Address.postcode FROM Customer INNER JOIN Address ON Customer.customer_id = Order.customer_id;")
     return None
 
 def get_purchase(purchase_id):
@@ -74,6 +74,9 @@ if __name__ == '__main__':
     for dessert in get_all_desserts():
         print(dessert.dessert_id, dessert.name)
 
+    test_customer = Customer(1, )
+
+    get_customer_address()
 
 """
 - get_all_pizzas() -> Pizza[]

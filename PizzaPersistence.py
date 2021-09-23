@@ -15,7 +15,8 @@ cursor = cnx.cursor()
 # required methods
 
 def get_all_pizzas():
-    query = ("SELECT pizza_id, pizza_name, pizza_price_euros, pizza_price_cents FROM Pizza;")  # need to add join for toppings
+    # query = ("SELECT Pizza.pizza_id, Pizza.pizza_name, Pizza.pizza_price_euros, Pizza.pizza_price_cents, Topping.topping_name FROM Pizza INNER JOIN ToppingMapping ON Pizza.pizza_id = ToppingMapping.pizza_id INNER JOIN Topping on ToppingMapping.topping_id = Topping.topping_id;")
+    query = ("SELECT Pizza.pizza_id, Pizza.pizza_name, Pizza.pizza_price_euros, Pizza.pizza_price_cents FROM Pizza;")
     cursor.execute(query)
     allPizzas = []
     for (pizza_id, pizza_name, pizza_price_euros, pizza_price_cents) in cursor:

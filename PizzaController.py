@@ -1,18 +1,8 @@
 from flask import jsonify
+import PizzaPersistence
 
 def get_all_pizzas():
-    return {"pizzas": [
-            {
-                "pizza_id": 1,
-                "name": "Margherita",
-                "toppings": ["tomato","cheese"],
-                "price": 15
-            },{
-                "pizza_id": 1,
-                "name": "Napoli",
-                "toppings": ["tomato","cheese","basil","fish"],
-                "price": 16
-            }]}, 200
+    return jsonify(PizzaPersistence.get_all_pizzas())
 
 def get_all_drinks():
     return {"drinks": [ {

@@ -12,7 +12,7 @@ class Pizza(Resource):
 
 class Drink(Resource):
     def get(self):
-        return  PizzaController.get_all_drinks()
+        return PizzaController.get_all_drinks()
 
 class Desert(Resource):
     def get(self):

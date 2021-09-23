@@ -2,12 +2,8 @@ from flask import jsonify
 
 class Pizza:
 
-    name = str
-    cost_euro = int
-    cost_cents = int
-    toppings = []
-
-    def __init__(self, name, cost_euro, cost_cents, toppings):
+    def __init__(self, pizza_id, name, cost_euro, cost_cents, toppings):
+        self.pizza_id = pizza_id
         self.name = name
         self.cost_euro = cost_euro
         self.cost_cents = cost_cents

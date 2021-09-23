@@ -1,5 +1,5 @@
 from entities.Pizza import Pizza
-from entities.Desert import Desert
+from entities.Dessert import Dessert
 from entities.Drink import Drink
 import mysql
 from mysql.connector import (connection)
@@ -20,28 +20,28 @@ cursor = cnx.cursor()
 # required methods
 
 def get_all_pizzas():
-    query = ("SELECT pizza_name, pizza_price_euros, pizza_price_cents FROM Pizza;")  # need to add join for toppings
+    query = ("SELECT pizza_id, pizza_name, pizza_price_euros, pizza_price_cents FROM Pizza;")  # need to add join for toppings
     cursor.execute(query)
-    AllPizzas = []
-    for (pizza_name, pizza_price_euros, pizza_price_cents) in cursor:
-        AllPizzas.append(Pizza(pizza_name, pizza_price_euros, pizza_price_cents, []))  # add toppings
-    return AllPizzas
+    allPizzas = []
+    for (pizza_id, pizza_name, pizza_price_euros, pizza_price_cents) in cursor:
+        allPizzas.append(Pizza(pizza_id, pizza_name, pizza_price_euros, pizza_price_cents, []))  # add toppings
+    return allPizzas
 
 def get_all_desserts():
-    query = ("SELECT dessert_name, dessert_price_euros, dessert_price_cents FROM Dessert;")  # need to add join for toppings
+    query = ("SELECT dessert_id, dessert_name, dessert_price_euros, dessert_price_cents FROM Dessert;")  # need to add join for toppings
     cursor.execute(query)
-    AllDesserts = []
-    for (dessert_name, dessert_price_euros, dessert_price_cents) in cursor:
-        AllDesserts.append(Drink(dessert_name, dessert_price_euros, dessert_price_cents))  # add toppings
-    return AllDesserts
+    allDeserts = []
+    for (dessert_id, dessert_name, dessert_price_euros, dessert_price_cents) in cursor:
+        allDeserts.append(Dessert(dessert_id, dessert_name, dessert_price_euros, dessert_price_cents))  # add toppings
+    return allDeserts
 
 def get_all_drinks():
-    query = ("SELECT drink_name, drink_price_euros, drink_price_cents FROM Drink;")  # need to add join for toppings
+    query = ("SELECT drink_id, drink_name, drink_price_euros, drink_price_cents FROM Drink;")  # need to add join for toppings
     cursor.execute(query)
-    AllDrinks = []
-    for (drink_name, drink_price_euros, drink_price_cents) in cursor:
-        AllDrinks.append(Drink(drink_name, drink_price_euros, drink_price_cents))  # add toppings
-    return AllDrinks
+    allDrinks = []
+    for (drink_id, drink_name, drink_price_euros, drink_price_cents) in cursor:
+        allDrinks.append(Drink(drink_id, drink_name, drink_price_euros, drink_price_cents))  # add toppings
+    return allDrinks
 
 def create_purchase(Purchase):
     return None
@@ -50,6 +50,7 @@ def create_customer(Customer):
     return None
 
 def get_customer_address(Customer):
+    query = ("SELECT street, town, postcode FROM Customer")
     return None
 
 def get_purchase(purchase_id):
@@ -61,17 +62,17 @@ def get_delivery_driver(purchase_id):
 # Main function to test query methods
 if __name__ == '__main__':
     for pizza in get_all_pizzas():
-        print(pizza.name)
+        print(pizza.pizza_id, pizza.name)
 
     print("---")
 
     for drink in get_all_drinks():
-        print(drink.name)
+        print(drink.drink_id, drink.name)
 
     print("---")
 
     for dessert in get_all_desserts():
-        print(dessert.name)
+        print(dessert.dessert_id, dessert.name)
 
 
 """

@@ -15,12 +15,28 @@ cursor = cnx.cursor()
 # required methods
 
 def get_all_pizzas():
-    # query = ("SELECT Pizza.pizza_id, Pizza.pizza_name, Pizza.pizza_price_euros, Pizza.pizza_price_cents, Topping.topping_name FROM Pizza INNER JOIN ToppingMapping ON Pizza.pizza_id = ToppingMapping.pizza_id INNER JOIN Topping on ToppingMapping.topping_id = Topping.topping_id;")
-    query = ("SELECT Pizza.pizza_id, Pizza.pizza_name, Pizza.pizza_price_euros, Pizza.pizza_price_cents FROM Pizza;")
+    query = ("SELECT Pizza.pizza_id, "
+             "Pizza.pizza_name, "
+             "Pizza.pizza_price_euros, "
+             "Pizza.pizza_price_cents, "
+             "Topping.topping_name FROM Pizza "
+             "INNER JOIN ToppingMapping ON Pizza.pizza_id = ToppingMapping.pizza_id "
+             "INNER JOIN Topping on ToppingMapping.topping_id = Topping.topping_id;")
+    # query = ("SELECT Pizza.pizza_id, Pizza.pizza_name, Pizza.pizza_price_euros, Pizza.pizza_price_cents FROM Pizza;")
     cursor.execute(query)
+    # The following algorithm makes sure, that all the toppings from a many-to-many relation
+    # are geting mapped to the corresponding pizza
     allPizzas = []
-    for (pizza_id, pizza_name, pizza_price_euros, pizza_price_cents) in cursor:
-        allPizzas.append(Pizza(pizza_id, pizza_name, pizza_price_euros, pizza_price_cents, []))  # add toppings
+    for (pizza_id, pizza_name, pizza_price_euros, pizza_price_cents, topping_name) in cursor:
+        already_exists = False
+        for check_pizza in allPizzas:
+            if check_pizza.pizza_id == pizza_id:
+                pointer = check_pizza
+                already_exists = True
+        if already_exists:
+            pointer.toppings.append(topping_name)
+        else:
+            allPizzas.append(Pizza(pizza_id, pizza_name, pizza_price_euros, pizza_price_cents, [topping_name]))  # add toppings
     return allPizzas
 
 def get_all_desserts():
@@ -58,7 +74,7 @@ def get_delivery_driver(purchase_id):
 # Main function to test query methods
 if __name__ == '__main__':
     for pizza in get_all_pizzas():
-        print(pizza.pizza_id, pizza.name)
+        print(pizza.pizza_id, pizza.name, pizza.toppings)
 
     print("---")
 
